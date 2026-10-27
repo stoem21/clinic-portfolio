@@ -1,6 +1,6 @@
 # Dental Clinic — Full-stack Portfolio
 
-A React and Express application for fictional dental-clinic workflows: patient records, treatment history, appointments, receipts, lab work and role-based access. The portfolio copy uses generic branding and an isolated PostgreSQL demo database.
+A full-stack dental clinic management application covering patient records, treatment history, appointments, receipts, lab work and role-based access. This public portfolio version uses generic branding, fictional records and an isolated PostgreSQL demo database.
 
 ## Live demo
 
@@ -20,12 +20,12 @@ The public demo signs visitors in automatically and uses fictional patient and f
 | Application state and forms | Zustand, React Router, React Hook Form, Zod, Axios |
 | Backend | Node.js 22, Express 5, TypeScript, JWT, optional TOTP |
 | Persistence | PostgreSQL 16, Prisma 6, migrations |
-| Delivery | Docker Compose; optional GitHub Pages frontends and ngrok-hosted APIs |
+| Delivery | GitHub Pages frontends; Docker Compose and ngrok for the demo backend |
 
 ## Features to explore
 
 - Patient and dentist management, treatment records and payment categories.
-- Frontdesk demo: appointment scheduling, follow-up calls and lab jobs (not yet used in live clinic operations).
+- Frontdesk demo: appointment scheduling, follow-up calls and lab jobs. See the frontdesk status above.
 - Receipts and printable documents using a fictional demo letterhead.
 - Role checks, audit events, soft deletion and restoration.
 - Thai/English interface support.
@@ -41,18 +41,18 @@ The public demo signs visitors in automatically and uses fictional patient and f
 
 I developed this as a solo project with AI coding assistance. My work covers the clinic workflows, React interface, Express API, Prisma/PostgreSQL data model and the integration of patient, treatment, appointment and receipt features.
 
-For this public portfolio, I also prepared the isolated demo, synthetic records, API connection and deployment configuration. AI tools assisted with implementation, debugging, tests and documentation. The [validation scope](docs/VALIDATION.md) describes completed checks and remaining end-to-end work; the frontdesk module has not yet been used in live clinic operations.
+For this public portfolio, I also prepared the isolated demo, synthetic records, API connection and deployment configuration. AI tools assisted with implementation, debugging, tests and documentation. The [validation scope](docs/VALIDATION.md) describes completed checks and remaining end-to-end work.
 
 ## Run a fresh local demo
 
-Requires Docker Desktop. From this repository root:
+Requires Docker Desktop and Python 3. From this repository root:
 
 ```bash
 python3 scripts/setup-demo.py
 docker compose up -d --build
 ```
 
-Open `http://localhost:4101`; the frontdesk is `http://localhost:4101/frontdesk/`. The username is `demo`; read `DEMO_PASSWORD` locally in the generated `.env`. The setup helper creates random local secrets and refuses to overwrite an existing `.env`.
+Open `http://localhost:4101`; the frontdesk is `http://localhost:4101/frontdesk/`. Visitor auto-login is enabled by default. If auto-login is disabled, sign in as `demo` using `DEMO_PASSWORD` from the generated local `.env`. The setup helper creates random local secrets and refuses to overwrite an existing `.env`.
 
 The Compose project is `clinic-portfolio`, with its own database volume. Initialization accepts only `DEMO_MODE=true` and `clinic-db/clinic_demo`; it refuses an existing unmarked database. Restarting retains demo edits. Automatic visitor login is enabled by default (`DEMO_AUTO_LOGIN=true`). Visitors receive the demo account permissions in the isolated demo database. Daily fixture generation remains disabled. The setup script preserves an existing `.env`; set `DEMO_AUTO_LOGIN=true` there if it was created earlier, then recreate the demo app container.
 
@@ -74,6 +74,8 @@ flowchart LR
 See [deployment configuration](docs/DEPLOYMENT.md). The frontend build supports `VITE_API_BASE_URL`, a project-site base path and hash routing for Pages. Backend runtime configuration, credentials, patient imports and database dumps are excluded.
 
 ## Validate
+
+Requires Node.js 22. Backend tests use mocked database/services; a running PostgreSQL instance is not required for these tests.
 
 ```bash
 cd backend
