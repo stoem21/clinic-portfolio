@@ -2,7 +2,7 @@
 //
 // Data source: `thaiGeoData.json`, vendored from the `geothai` npm package
 // (MIT License, Copyright (c) 2024-Present GeoThai — see
-// node_modules/geothai/LICENSE) — 77 provinces / 928 districts / 7,436
+// docs/licenses/geothai-MIT.txt and THIRD_PARTY_NOTICES.md) — 77 provinces / 928 districts / 7,436
 // subdistricts, each with a verified `name_th` AND `name_en` field, so the
 // same dataset serves both UI languages without any transliteration
 // guesswork on our part.

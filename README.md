@@ -30,6 +30,19 @@ The public demo signs visitors in automatically and uses fictional patient and f
 - Role checks, audit events, soft deletion and restoration.
 - Thai/English interface support.
 
+## Engineering highlights
+
+- **Relational workflows:** Patient, treatment, receipt, lab-work and appointment records are connected through a PostgreSQL schema managed with Prisma migrations.
+- **Access and traceability:** Express middleware enforces role checks, while audit events record changes. Soft deletion and restoration support recoverable record management.
+- **Isolated demonstration:** Demo initialization uses a separate database with synthetic records, generated local secrets and automatic visitor login. Production patient imports and database dumps are excluded.
+- **Thai/English address entry:** The address picker loads geographic reference data on demand and supports cascading province, district, subdistrict and postal-code selection.
+
+## My contribution
+
+I developed this as a solo project with AI coding assistance. My work covers the clinic workflows, React interface, Express API, Prisma/PostgreSQL data model and the integration of patient, treatment, appointment and receipt features.
+
+For this public portfolio, I also prepared the isolated demo, synthetic records, API connection and deployment configuration. AI tools assisted with implementation, debugging, tests and documentation. The [validation scope](docs/VALIDATION.md) describes completed checks and remaining end-to-end work; the frontdesk module has not yet been used in live clinic operations.
+
 ## Run a fresh local demo
 
 Requires Docker Desktop. From this repository root:
@@ -41,7 +54,7 @@ docker compose up -d --build
 
 Open `http://localhost:4101`; the frontdesk is `http://localhost:4101/frontdesk/`. The username is `demo`; read `DEMO_PASSWORD` locally in the generated `.env`. The setup helper creates random local secrets and refuses to overwrite an existing `.env`.
 
-The Compose project is `clinic-portfolio`, with its own database volume. Initialization accepts only `DEMO_MODE=true` and `clinic-db/clinic_demo`; it refuses an existing unmarked database. Restarting retains demo edits. Automatic visitor login is enabled by default (`DEMO_AUTO_LOGIN=true`), as requested for the portfolio. Visitors receive the demo account permissions in the isolated demo database. Daily fixture generation remains disabled. The setup script preserves an existing `.env`; set `DEMO_AUTO_LOGIN=true` there if it was created earlier, then recreate the demo app container.
+The Compose project is `clinic-portfolio`, with its own database volume. Initialization accepts only `DEMO_MODE=true` and `clinic-db/clinic_demo`; it refuses an existing unmarked database. Restarting retains demo edits. Automatic visitor login is enabled by default (`DEMO_AUTO_LOGIN=true`). Visitors receive the demo account permissions in the isolated demo database. Daily fixture generation remains disabled. The setup script preserves an existing `.env`; set `DEMO_AUTO_LOGIN=true` there if it was created earlier, then recreate the demo app container.
 
 ```bash
 docker compose stop
@@ -79,10 +92,12 @@ npm run build
 npm run build:frontdesk
 ```
 
-See [validation scope](docs/VALIDATION.md) for checks actually completed on this prepared copy and checks still requiring a normal local runtime.
+See [validation scope](docs/VALIDATION.md) for completed checks and workflows that still need end-to-end validation.
 
 ## Source and attribution
 
-The snapshot derives from the isolated demo version of the application. Its public copy has generic branding, safe fixture entrypoints, Pages routing and API configuration. Current lab-period and OneDrive folder-creation fixes were carried into this copy. Imports of legacy patient data are not part of this repository.
+This public demo uses generic branding, synthetic fixtures and an isolated PostgreSQL database. Production patient records, credentials and database dumps are excluded.
 
-The address picker includes geographic reference data derived from `geothai`; check its attribution and redistribution terms before publication. Third-party packages retain their own licenses. No open-source license or personal authorship claim is inferred by this preparation; those choices await the owner's review.
+The Thai address picker includes an unchanged copy of the geographic reference data from [GeoThai](https://github.com/GeoThai/npm-packages), npm package `geothai` version 3.0.1. Source details and the MIT notice shipped with that package are preserved in [third-party notices](THIRD_PARTY_NOTICES.md).
+
+This repository does not include an open-source license for the application. Third-party components retain their own licenses.
