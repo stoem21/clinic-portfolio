@@ -2,6 +2,16 @@
 
 A React and Express application for fictional dental-clinic workflows: patient records, treatment history, appointments, receipts, lab work and role-based access. The portfolio copy uses generic branding and an isolated PostgreSQL demo database.
 
+## Live demo
+
+[Open the Clinic demo](https://stoem21.github.io/clinic-portfolio/)
+
+The public demo signs visitors in automatically and uses fictional patient and financial records in an isolated database. The backend runs on a Mac through an HTTPS tunnel, so interactive features are available while the host and tunnel are online.
+
+![Clinic dashboard with fictional demo records](docs/images/clinic-demo.jpg)
+
+*Screenshot of the demo dashboard; all patient and financial figures are synthetic.*
+
 > **Frontdesk status:** The frontdesk module has not yet been used in live clinic operations. It is included for demonstration; end-to-end workflow validation is still pending.
 
 | Layer | Technologies |
