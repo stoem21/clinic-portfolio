@@ -1,0 +1,122 @@
+{
+  "toothExtra": "ฟันเกิน",
+  "treatmentType": {
+    "extraction": "ถอนฟัน",
+    "surgicalRemoval": "ผ่าฟันคุด/ฟันฝัง",
+    "scaling": "ขูดหินปูน",
+    "rootPlaning": "เกลาราก",
+    "filling": "อุดฟัน",
+    "rootCanalTreatment": "รักษาราก",
+    "removableDentures": "ฟันปลอมถอนได้",
+    "post": "เดือยฟัน",
+    "crown": "ครอบฟัน",
+    "implant": "รากเทียม",
+    "ortho": "จัดฟัน",
+    "bleaching": "ฟอกสีฟัน",
+    "fluoride": "เคลือบฟลูออไรด์",
+    "xRay": "X-ray",
+    "pediatrics": "ทันตกรรมเด็ก",
+    "supply": "ค่าวัสดุ/อุปกรณ์",
+    "others": "อื่นๆ"
+  },
+  "paymentType": {
+    "transfer": "โอน",
+    "cash": "เงินสด",
+    "socialSecurity": "ประกันสังคม"
+  },
+  "labWorkType": {
+    "other": "อื่น ๆ",
+    "rtn": "RTN",
+    "implant": "รากเทียม",
+    "denture": "ฟันปลอม"
+  },
+  "scalingArea": {
+    "top": "บน",
+    "bottom": "ล่าง"
+  },
+  "rootPlanArea": {
+    "Q1": "Q1",
+    "Q2": "Q2",
+    "Q3": "Q3",
+    "Q4": "Q4"
+  },
+  "rootType": {
+    "oc": "OC",
+    "lt": "LT",
+    "mi": "MI",
+    "frc": "FRC",
+    "changeMed": "เปลี่ยน MED",
+    "bleachDead": "ฟอกฟันตาย"
+  },
+  "dentureType": {
+    "TP": "TP",
+    "RPD": "RPD",
+    "VP": "VP",
+    "CD": "CD"
+  },
+  "crownType": {
+    "fullMetal": "full metal crown",
+    "pfm": "pfm crown",
+    "allCeramic": "all ceramic crown",
+    "veneer": "veneer"
+  },
+  "orthoActivity": {
+    "adjust": "ปรับเครื่องมือเดือนที่",
+    "printMount": "พิมพ์ปาก",
+    "bondUpper": "ติดเครื่องมือบน",
+    "bondLower": "ติดเครื่องมือล่าง",
+    "removeAppliance": "ถอดเครื่องมือ",
+    "rtnUpper": "RTN บน",
+    "rtnLower": "RTN ล่าง",
+    "others": "อื่นๆ"
+  },
+  "rtnMaterial": {
+    "wire": "RTN ลวด",
+    "clear": "RTN ใส"
+  },
+  "xrayType": {
+    "small": "ฟิล์มเล็กซี่ (Periapical)",
+    "big": "ฟิล์มใหญ่"
+  },
+  "xrayFilmType": {
+    "opg": "OPG",
+    "lateralCeph": "Lateral Cep"
+  },
+  "pediatricsTreatmentType": {
+    "extraction": "ถอนฟัน",
+    "filling": "อุดฟัน",
+    "rootCanal": "รักษาราก",
+    "ssc": "ssc"
+  },
+  "forms": {
+    "tooth": "ซี่ฟัน",
+    "type": "ประเภท",
+    "selectType": "เลือกประเภท",
+    "details": "รายละเอียด",
+    "fillingDetailsPlaceholder": "ระบุรายละเอียดการอุดฟัน",
+    "detailsPlaceholder": "ระบุรายละเอียด",
+    "note": "หมายเหตุ",
+    "activity": "กิจกรรม",
+    "month": "เดือนที่",
+    "monthPlaceholder": "เช่น 3",
+    "rtnMaterial": "วัสดุ RTN",
+    "switchSelectionMethod": "เปลี่ยนวิธีเลือก",
+    "selectTooth": "เลือกซี่ฟัน",
+    "area": "บริเวณ",
+    "wholeMouth": "ทั้งปาก",
+    "xrayType": "ประเภทฟิล์ม",
+    "filmType": "ชนิดฟิล์ม",
+    "treatmentType": "ประเภทการรักษา",
+    "fillingList": "รายการอุดฟัน",
+    "side": "ด้าน",
+    "addTooth": "เพิ่มซี่ฟัน",
+    "selectAll": "เลือกทั้งหมด",
+    "clearAll": "ล้างทั้งหมด"
+  },
+  "validation": {
+    "required": "จำเป็นต้องระบุ",
+    "pickAtLeastOne": "เลือกอย่างน้อย 1 รายการ",
+    "quadrantOrTooth": "เลือก Quadrant หรือ ซี่ฟัน",
+    "fillEveryRow": "กรอกซี่ฟันและด้านให้ครบทุกแถว"
+  }
+}

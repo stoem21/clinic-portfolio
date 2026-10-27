@@ -1,0 +1,17 @@
+{
+  "usernameRequired": "กรุณากรอกชื่อผู้ใช้",
+  "passwordRequired": "กรุณากรอกรหัสผ่าน",
+  "appTitle": "ระบบจัดการคลินิกทันตกรรม",
+  "subtitle": "เข้าสู่ระบบเพื่อดำเนินการต่อ",
+  "username": "ชื่อผู้ใช้",
+  "password": "รหัสผ่าน",
+  "signIn": "เข้าสู่ระบบ",
+  "signInFailedTitle": "เข้าสู่ระบบไม่สำเร็จ",
+  "signInFailedDescription": "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง",
+  "totpInstruction": "ป้อนรหัส 6 หลักจากแอป Authenticator หรือรหัสสำรอง",
+  "verificationCode": "รหัสยืนยัน",
+  "noPhoneHint": "ไม่มีโทรศัพท์? ใช้รหัสสำรอง (8 ตัวอักษร) แทน",
+  "backToSignIn": "กลับหน้าเข้าสู่ระบบ",
+  "totpFailedTitle": "รหัสยืนยันไม่ถูกต้อง",
+  "totpFailedDescription": "ลองอีกครั้ง หรือใช้รหัสสำรอง"
+}

@@ -1,0 +1,52 @@
+name: Deploy Pages (manual)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci
+      - name: Build frontend for Pages
+        working-directory: frontend
+        env:
+          VITE_API_BASE_URL: ${{ vars.VITE_API_BASE_URL }}
+          VITE_SITE_BASE: /${{ github.event.repository.name }}/
+          VITE_PAGES: 'true'
+        run: |
+          test -n "$VITE_API_BASE_URL"
+          npm run build
+      - name: Build frontdesk and include it in the site
+        working-directory: frontend
+        env:
+          VITE_API_BASE_URL: ${{ vars.VITE_API_BASE_URL }}
+          VITE_SITE_BASE: /${{ github.event.repository.name }}/
+          VITE_PAGES: 'true'
+        run: |
+          npm run build:frontdesk
+          mkdir -p dist/frontdesk
+          cp -R ../frontdesk/dist/. dist/frontdesk/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: frontend/dist
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

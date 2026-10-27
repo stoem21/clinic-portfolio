@@ -1,0 +1,17 @@
+{
+  "usernameRequired": "Please enter your username",
+  "passwordRequired": "Please enter your password",
+  "appTitle": "Dental Clinic Management System",
+  "subtitle": "Sign in to continue",
+  "username": "Username",
+  "password": "Password",
+  "signIn": "Sign In",
+  "signInFailedTitle": "Sign in failed",
+  "signInFailedDescription": "Incorrect username or password",
+  "totpInstruction": "Enter the 6-digit code from your Authenticator app, or a backup code",
+  "verificationCode": "Verification Code",
+  "noPhoneHint": "No phone? Use an 8-character backup code instead",
+  "backToSignIn": "Back to sign in",
+  "totpFailedTitle": "Invalid verification code",
+  "totpFailedDescription": "Try again, or use a backup code"
+}

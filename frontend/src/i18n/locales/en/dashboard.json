@@ -1,0 +1,46 @@
+{
+  "title": "Home",
+  "revenueToday": "Today's Revenue",
+  "revenueMonth": "This Month's Revenue",
+  "todayRecords": "Today's Records",
+  "totalClients": "Total Patients",
+  "newPatientsMonth": "New Patients This Month",
+  "treatmentTypesThisMonth": "Treatment Types (This Month)",
+  "noDataThisMonth": "No data yet this month",
+  "summaryByPeriod": "Summary by Period",
+  "summaryToday": "Today's Summary",
+  "from": "From",
+  "to": "To",
+  "totalRevenueSelectedPeriod": "Total Revenue for Selected Period",
+  "totalRevenueToday": "Total Revenue Today",
+  "noDataSelectedPeriod": "No data for the selected period",
+  "patient": "Patient",
+  "labCost": "Lab Cost",
+  "item": "Item",
+  "labWorkType": "Lab Work Type",
+  "amount": "Amount",
+  "totalRevenue": "Total Revenue",
+  "totalLabCost": "Total Lab Cost",
+  "net": "Net",
+  "viewDentistDetail": {
+    "title": "View Dentist Detail",
+    "selectLabel": "Select Dentist",
+    "placeholder": "Select a dentist...",
+    "button": "View Details"
+  },
+  "dailyBreakdown": {
+    "title": "Daily Summary",
+    "supplyCost": "Supply Cost",
+    "dentistColumn": "Dentist {{n}}",
+    "totalRow": "Total"
+  },
+  "dentistReport": {
+    "loadError": "Failed to load data",
+    "subtitle": "Details for the selected period",
+    "treatmentRecords": "Treatment Records",
+    "noRecords": "No treatment records in the selected period",
+    "treatmentCost": "Treatment Cost",
+    "noOutstandingLabCost": "No outstanding lab cost",
+    "summary": "Summary"
+  }
+}

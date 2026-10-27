@@ -1,0 +1,42 @@
+{
+  "totp": {
+    "dialogTitle": "ตั้งค่ายืนยันตัวตนสองขั้นตอน (2FA)",
+    "scanInstruction": "1. สแกน QR code ด้วย Google Authenticator, Authy หรือแอปที่รองรับ TOTP",
+    "qrAlt": "QR Code สำหรับ 2FA",
+    "manualEntry": "หรือพิมพ์รหัสด้วยตนเอง:",
+    "saveBackupCodesInstruction": "2. บันทึกรหัสสำรอง 10 รหัสนี้ไว้ก่อน (ใช้ได้ครั้งเดียว)",
+    "copy": "คัดลอก",
+    "download": "ดาวน์โหลด",
+    "savedConfirmLabel": "ฉันได้บันทึกรหัสสำรองไว้ในที่ปลอดภัยแล้ว",
+    "verifyInstruction": "ป้อนรหัส 6 หลักจากแอป Authenticator เพื่อยืนยันการตั้งค่า",
+    "verificationCode": "รหัสยืนยัน",
+    "enabledSuccess": "เปิดใช้งาน 2FA สำเร็จ! บัญชีของคุณปลอดภัยยิ่งขึ้นแล้ว",
+    "done": "เสร็จสิ้น",
+    "backupCodesCopied": "คัดลอกรหัสสำรองแล้ว",
+    "backupCodesFileTitle": "รหัสสำรอง 2FA",
+    "backupCodesFileWarning": "รหัสแต่ละรหัสใช้ได้ครั้งเดียว เก็บไว้ในที่ปลอดภัย"
+  },
+  "page": {
+    "title": "บัญชีของฉัน",
+    "accountInfo": "ข้อมูลบัญชี",
+    "username": "ชื่อผู้ใช้",
+    "role": "บทบาท",
+    "roleSuperAdmin": "ผู้ดูแลระบบสูงสุด",
+    "roleAdmin": "ผู้ดูแลระบบ",
+    "roleUser": "ผู้ใช้งาน",
+    "twoFactorTitle": "ยืนยันตัวตนสองขั้นตอน (2FA)",
+    "twoFactorDescription": "ใช้แอป Authenticator (เช่น Google Authenticator) เพื่อเพิ่มความปลอดภัยในการเข้าสู่ระบบ",
+    "featureDisabled": "2FA ถูกปิดใช้งานโดยผู้ดูแลระบบ",
+    "enabled": "เปิดใช้งานอยู่",
+    "backupCodesRemaining": "รหัสสำรองเหลือ {{count}} รหัส",
+    "reconfigure": "ตั้งค่าใหม่",
+    "disable": "ปิดใช้งาน",
+    "notEnabledYet": "ยังไม่ได้เปิดใช้งาน",
+    "setUp": "ตั้งค่า 2FA",
+    "enabledSuccessToast": "เปิดใช้งาน 2FA สำเร็จ",
+    "disabledSuccessToast": "ปิดใช้งาน 2FA สำเร็จ",
+    "disableDialogTitle": "ปิดใช้งาน 2FA",
+    "disableDialogDescription": "กรอกรหัสผ่านปัจจุบันเพื่อยืนยันการปิดใช้งาน 2FA",
+    "passwordLabel": "รหัสผ่าน"
+  }
+}

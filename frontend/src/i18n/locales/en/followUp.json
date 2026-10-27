@@ -1,0 +1,7 @@
+{
+  "tab": "Orthodontic follow-up", "allPatients": "All patients", "from": "Start date", "to": "End date",
+  "minDays": "Minimum days", "maxDays": "Maximum days", "invalidRange": "Enter non-negative whole days, with minimum no greater than maximum.",
+  "patient": "Patient", "phone": "Phone", "dentist": "Orthodontist", "lastContact": "Last contact", "lastTreatment": "Last treatment",
+  "history": "Follow-up calls", "callDate": "Call date", "caller": "Caller", "saveCall": "Record call",
+  "empty": "No patients match this day range.", "noCalls": "No calls recorded.", "loading": "Loading…", "retry": "Unable to load. Retry", "loadError": "Unable to load call history. Close and try again."
+}

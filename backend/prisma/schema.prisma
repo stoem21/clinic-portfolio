@@ -1,0 +1,345 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  USER
+}
+
+model User {
+  id                 String         @id @default(uuid())
+  username           String         @unique
+  passwordHash       String
+  role               Role           @default(USER)
+  isActive           Boolean        @default(true)
+  mustChangePassword Boolean        @default(true)
+  tokenVersion       Int            @default(0)
+  totpSecret         String?
+  totpEnabled        Boolean        @default(false)
+  totpBackupCodes    String[]
+  receipts           Receipt[]
+  followUpCalls      FollowUpCall[]
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+}
+
+// Append-only record of who created/edited/deleted/restored what.
+model AuditLog {
+  id            String   @id @default(uuid())
+  actorId       String?
+  actorUsername String
+  action        String // create | update | delete | restore | reset-password | ...
+  entity        String // client | dentist | treatment | lab-work | user
+  entityId      String
+  summary       String?
+  context       Json? // Request metadata only; never passwords, tokens, or clinical content
+  changes       Json? // update: [{ field, before, after }] diff; null for non-edits
+  createdAt     DateTime @default(now())
+
+  @@index([entity, entityId])
+  @@index([createdAt])
+}
+
+model Dentist {
+  opsAppointments    OpsAppointment[]
+  id                 String            @id @default(uuid())
+  name               String
+  phoneNumber        String?
+  email              String?
+  lineId             String?
+  note               String?
+  licenseId          String            @unique
+  isOrthoDent        Boolean           @default(false)
+  isActive           Boolean           @default(true)
+  deletedAt          DateTime?
+  clients            Client[]
+  treatments         TreatmentRecord[]
+  labWorkAsPlacement LabWork[]         @relation("LabWorkPlacementDentist")
+  labWorkAsDelivered LabWork[]         @relation("LabWorkDeliveredDentist")
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+}
+
+model Client {
+  opsAppointments    OpsAppointment[]
+  id                 String            @id @default(uuid())
+  hn                 String            @unique
+  nameTitle          String
+  firstName          String
+  lastName           String
+  nationalId         String?
+  phoneNumber        String
+  gender             String
+  birthday           DateTime
+  orthoDentId        String?
+  orthoDent          Dentist?          @relation(fields: [orthoDentId], references: [id])
+  addressSubDistrict String?
+  addressDistrict    String?
+  addressProvince    String?
+  addressZipCode     String?
+  addressDetail      String?
+  medCon             String?
+  drugAllergy        String?
+  drugEat            String?
+  deletedAt          DateTime?
+  treatments         TreatmentRecord[]
+  followUpCalls      FollowUpCall[]
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+}
+
+model TreatmentRecord {
+  id            String             @id @default(uuid())
+  clientId      String
+  client        Client             @relation(fields: [clientId], references: [id])
+  dentistId     String
+  dentist       Dentist            @relation(fields: [dentistId], references: [id])
+  treatmentDate DateTime
+  note          String?
+  deletedAt     DateTime?
+  items         TreatmentItem[]
+  payments      TreatmentPayment[]
+  labWorks      LabWork[]
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+}
+
+model TreatmentItem {
+  id                String          @id @default(uuid())
+  treatmentRecordId String
+  treatmentRecord   TreatmentRecord @relation(fields: [treatmentRecordId], references: [id], onDelete: Cascade)
+  type              String
+  data              Json
+  price             Decimal?        @db.Decimal(10, 2)
+  createdAt         DateTime        @default(now())
+}
+
+// How the record's total cost was collected — zero or more entries; when any
+// exist, their amounts must sum to exactly the record's total item cost
+// (enforced in parseBody, not at the DB level).
+model TreatmentPayment {
+  id                String          @id @default(uuid())
+  treatmentRecordId String
+  treatmentRecord   TreatmentRecord @relation(fields: [treatmentRecordId], references: [id], onDelete: Cascade)
+  type              String // 'transfer' | 'cash' | 'socialSecurity'
+  amount            Decimal         @db.Decimal(10, 2)
+  createdAt         DateTime        @default(now())
+}
+
+// A dental-lab job ordered as part of a treatment visit. Created only when the
+// treatment record is first created — type is picked before cost/delivery are
+// known (see treatments.ts POST). The full cost splits 50/50 between the
+// placement dentist (the record's own dentist, snapshotted at creation) and
+// the delivered dentist (assigned later, once the finished work is actually
+// handed to the patient — may stay unset indefinitely). Each half has its own
+// independently-toggleable paid flag.
+model LabWork {
+  id                    String          @id @default(uuid())
+  treatmentRecordId     String
+  treatmentRecord       TreatmentRecord @relation(fields: [treatmentRecordId], references: [id], onDelete: Cascade)
+  type                  String // see LAB_WORK_TYPES in treatments.ts
+  typeDescription       String?
+  companyId             String?
+  placementDentistId    String // snapshot of the record's dentistId at creation time
+  placementDentist      Dentist         @relation("LabWorkPlacementDentist", fields: [placementDentistId], references: [id])
+  deliveredDentistId    String?
+  deliveredAssignedDate DateTime?       @db.Date
+  deliveredDentist      Dentist?        @relation("LabWorkDeliveredDentist", fields: [deliveredDentistId], references: [id])
+  cost                  Decimal?        @db.Decimal(10, 2)
+  placementPaid         Boolean         @default(false)
+  placementPaidAt       DateTime?
+  deliveredPaid         Boolean         @default(false)
+  deliveredPaidAt       DateTime?
+  createdAt             DateTime        @default(now())
+  updatedAt             DateTime        @updatedAt
+}
+
+model HnCounter {
+  version Int @default(0) // invalidates unfinished forms after manual adjustment
+  year  Int @id
+  count Int @default(0)
+}
+
+model FollowUpCall {
+  id         String   @id @default(uuid())
+  clientId   String
+  client     Client   @relation(fields: [clientId], references: [id])
+  callerId   String?
+  caller     User?    @relation(fields: [callerId], references: [id], onDelete: SetNull)
+  callerName String
+  callDate   DateTime @db.Date
+  createdAt  DateTime @default(now())
+
+  @@index([clientId, callDate])
+}
+
+// A snapshot of what was printed — deliberately not live-derived from
+// TreatmentRecord/TreatmentItem, so an already-issued receipt never silently
+// changes if the underlying record is edited later.
+model Receipt {
+  id                 String   @id @default(uuid())
+  bookNumber         String? // physical receipt-book number ("เล่มที่") — filled in manually, not tracked/validated by the app
+  number             Int // resets to 1 each Buddhist year — see ReceiptCounter
+  buddhistYear       Int
+  kind               String // 'individual' | 'bulk'
+  customerName       String
+  customerAddress    String?
+  customerTaxId      String?
+  patientHn          String? // individual receipts only
+  issueDate          DateTime
+  lineItems          Json // [{ label: string, amount: number }]
+  totalAmount        Decimal  @db.Decimal(10, 2)
+  amountText         String // Thai baht-in-words, snapshotted at issue time
+  treatmentRecordIds String[] // which record(s) this receipt covers
+  issuedById         String?
+  issuedBy           User?    @relation(fields: [issuedById], references: [id])
+  createdAt          DateTime @default(now())
+
+  @@unique([buddhistYear, number])
+}
+
+model ReceiptCounter {
+  year  Int @id
+  count Int @default(0)
+}
+
+model OpsGrant {
+  id         String  @id @default(uuid())
+  userId     String
+  permission String
+  allowed    Boolean
+
+  @@unique([userId, permission])
+}
+
+model OpsSchedule {
+  id          String    @id @default(uuid())
+  dentistId   String
+  weekday     Int
+  intervalWeeks Int @default(1)
+  startMinute Int
+  endMinute   Int
+  from        DateTime  @db.Date
+  to          DateTime? @db.Date
+  createdBy   String
+  requestKey  String    @unique
+  createdAt   DateTime  @default(now())
+
+  @@index([dentistId, weekday])
+}
+
+model OpsException {
+  id            String   @id @default(uuid())
+  dentistId     String
+  date          DateTime @db.Date
+  cancelled     Boolean  @default(false)
+  replacementId String?
+  startMinute   Int
+  endMinute     Int
+  version       Int      @default(1)
+  reason        String
+  updatedBy     String
+
+  @@unique([dentistId, date])
+}
+
+model OpsAppointment {
+  id               String    @id @default(uuid())
+  clientId         String?
+  client           Client?   @relation(fields: [clientId], references: [id], onDelete: Restrict)
+  provisionalName  String
+  provisionalPhone String
+  dentistId        String
+  dentist          Dentist   @relation(fields: [dentistId], references: [id], onDelete: Restrict)
+  date             DateTime  @db.Date
+  minute           Int
+  duration         Int
+  status           String    @default("scheduled")
+  revision         Int       @default(1)
+  version          Int       @default(1)
+  notes            String    @default("")
+  requestKey       String    @unique
+  createdBy        String
+  updatedBy        String
+  createdAt        DateTime  @default(now())
+  calls            OpsCall[]
+
+  @@index([date, dentistId])
+  @@index([clientId, date])
+}
+
+model OpsCall {
+  id            String         @id @default(uuid())
+  appointmentId String
+  appointment   OpsAppointment @relation(fields: [appointmentId], references: [id], onDelete: Restrict)
+  revision      Int
+  outcome       String
+  notes         String
+  staffId       String
+  staffName     String
+  requestKey    String         @unique
+  createdAt     DateTime       @default(now())
+}
+
+model OpsEvidence {
+  id        String       @id @default(uuid())
+  bytes     Bytes
+  mime      String
+  hash      String
+  createdBy String
+  createdAt DateTime     @default(now())
+  expenses  OpsExpense[]
+
+  @@index([hash])
+}
+
+model OpsExpense {
+  id           String       @id @default(uuid())
+  kind         String
+  companyId    String?
+  category     String
+  description  String
+  amount       Decimal      @db.Decimal(12, 2)
+  paidDate     DateTime     @db.Date
+  paidTime     String?
+  recipient    String
+  bank         String?
+  reference    String?
+  notes        String
+  evidenceId   String?
+  evidence     OpsEvidence? @relation(fields: [evidenceId], references: [id], onDelete: Restrict)
+  reviewed     Boolean      @default(true)
+  bankVerified Boolean      @default(false)
+  createdBy    String
+  createdAt    DateTime     @default(now())
+  requestKey   String       @unique
+  voidedAt     DateTime?
+  voidedBy     String?
+  voidReason   String?
+  lines        OpsLabLine[]
+
+  @@index([paidDate])
+  @@index([reference])
+}
+
+// Deliberately no FK to LabWork: immutable payment snapshots survive source deletion.
+model OpsLabLine {
+  id              String     @id @default(uuid())
+  expenseId       String
+  expense         OpsExpense @relation(fields: [expenseId], references: [id], onDelete: Restrict)
+  jobId           String
+  activeJobId     String?    @unique
+  description     String
+  jobType         String
+  patientSnapshot Json
+  sourceRecordId  String
+  jobDate         DateTime   @db.Date
+  amount          Decimal    @db.Decimal(12, 2)
+}

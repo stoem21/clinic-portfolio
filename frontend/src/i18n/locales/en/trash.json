@@ -1,0 +1,9 @@
+{
+  "noDeletedItems": "No deleted items",
+  "restoredSuccess": "Restored successfully",
+  "restore": "Restore",
+  "subtitle": "Deleted items are kept here and can be restored",
+  "patientsSection": "Patients ({{count}})",
+  "dentistsSection": "Dentists ({{count}})",
+  "treatmentsSection": "Treatment Records ({{count}})"
+}

@@ -1,0 +1,42 @@
+{
+  "totp": {
+    "dialogTitle": "Set Up Two-Factor Authentication (2FA)",
+    "scanInstruction": "1. Scan the QR code with Google Authenticator, Authy, or any TOTP-compatible app",
+    "qrAlt": "2FA QR Code",
+    "manualEntry": "Or enter the code manually:",
+    "saveBackupCodesInstruction": "2. Save these 10 backup codes now (each one is single-use)",
+    "copy": "Copy",
+    "download": "Download",
+    "savedConfirmLabel": "I've saved my backup codes somewhere safe",
+    "verifyInstruction": "Enter the 6-digit code from your Authenticator app to confirm setup",
+    "verificationCode": "Verification Code",
+    "enabledSuccess": "2FA enabled successfully! Your account is now more secure.",
+    "done": "Done",
+    "backupCodesCopied": "Backup codes copied",
+    "backupCodesFileTitle": "2FA Backup Codes",
+    "backupCodesFileWarning": "Each code can only be used once. Keep this somewhere safe."
+  },
+  "page": {
+    "title": "My Account",
+    "accountInfo": "Account Information",
+    "username": "Username",
+    "role": "Role",
+    "roleSuperAdmin": "Super Administrator",
+    "roleAdmin": "Administrator",
+    "roleUser": "User",
+    "twoFactorTitle": "Two-Factor Authentication (2FA)",
+    "twoFactorDescription": "Use an Authenticator app (e.g. Google Authenticator) to add extra security to your login",
+    "featureDisabled": "2FA has been disabled by the administrator",
+    "enabled": "Enabled",
+    "backupCodesRemaining": "{{count}} backup codes remaining",
+    "reconfigure": "Reconfigure",
+    "disable": "Disable",
+    "notEnabledYet": "Not enabled yet",
+    "setUp": "Set Up 2FA",
+    "enabledSuccessToast": "2FA enabled successfully",
+    "disabledSuccessToast": "2FA disabled successfully",
+    "disableDialogTitle": "Disable 2FA",
+    "disableDialogDescription": "Enter your current password to confirm disabling 2FA",
+    "passwordLabel": "Password"
+  }
+}

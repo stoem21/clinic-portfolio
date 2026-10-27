@@ -1,0 +1,46 @@
+{
+  "title": "หน้าหลัก",
+  "revenueToday": "รายได้วันนี้",
+  "revenueMonth": "รายได้เดือนนี้",
+  "todayRecords": "บันทึกวันนี้",
+  "totalClients": "คนไข้ทั้งหมด",
+  "newPatientsMonth": "คนไข้ใหม่เดือนนี้",
+  "treatmentTypesThisMonth": "ประเภทการรักษา (เดือนนี้)",
+  "noDataThisMonth": "ยังไม่มีข้อมูลในเดือนนี้",
+  "summaryByPeriod": "สรุปตามช่วงเวลา",
+  "summaryToday": "สรุปวันนี้",
+  "from": "ตั้งแต่",
+  "to": "ถึง",
+  "totalRevenueSelectedPeriod": "รายได้รวมในช่วงที่เลือก",
+  "totalRevenueToday": "รายได้รวมวันนี้",
+  "noDataSelectedPeriod": "ไม่มีข้อมูลในช่วงที่เลือก",
+  "patient": "คนไข้",
+  "labCost": "ค่าแล็บ",
+  "item": "รายการ",
+  "labWorkType": "ประเภทงานแล็บ",
+  "amount": "จำนวนเงิน",
+  "totalRevenue": "รายได้รวม",
+  "totalLabCost": "ค่าแล็บรวม",
+  "net": "สุทธิ",
+  "viewDentistDetail": {
+    "title": "ดูรายละเอียดรายทันตแพทย์",
+    "selectLabel": "เลือกทันตแพทย์",
+    "placeholder": "เลือกทันตแพทย์...",
+    "button": "ดูรายละเอียด"
+  },
+  "dailyBreakdown": {
+    "title": "สรุปรายวัน",
+    "supplyCost": "ค่าวัสดุ/อุปกรณ์",
+    "dentistColumn": "ทันตแพทย์คนที่ {{n}}",
+    "totalRow": "รวม"
+  },
+  "dentistReport": {
+    "loadError": "โหลดข้อมูลไม่สำเร็จ",
+    "subtitle": "รายละเอียดตามช่วงเวลาที่เลือก",
+    "treatmentRecords": "บันทึกการรักษา",
+    "noRecords": "ไม่มีบันทึกการรักษาในช่วงที่เลือก",
+    "treatmentCost": "ค่ารักษา",
+    "noOutstandingLabCost": "ไม่มีค่าแล็บค้างจ่าย",
+    "summary": "สรุป"
+  }
+}

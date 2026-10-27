@@ -1,0 +1,20 @@
+{
+  "appName": "Dental Clinic",
+  "openMenu": "Open menu",
+  "closeMenu": "Close menu",
+  "navMenu": "Navigation menu",
+  "logout": "Log out",
+  "items": {
+    "home": "Home",
+    "clients": "Patients",
+    "treatments": "Treatment Records",
+    "labWork": "Lab Work",
+    "dentists": "Dentists",
+    "users": "Users",
+    "receipts": "Receipts",
+    "audit": "Audit Log",
+    "backups": "Backups",
+    "trash": "Trash",
+    "hnCounter": "Adjust HN counter"
+  }
+}

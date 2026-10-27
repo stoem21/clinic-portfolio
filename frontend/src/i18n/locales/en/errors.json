@@ -1,0 +1,23 @@
+{
+  "TOTP_LOGIN_CODE_INVALID": "Invalid verification code",
+  "TOTP_FEATURE_DISABLED": "2FA has been disabled by the administrator (TOTP_ENABLED=false)",
+  "TOTP_SETUP_CODE_INVALID": "Incorrect code — please try again",
+  "TOTP_ENABLED_SUCCESS": "2FA enabled successfully",
+  "TOTP_RESET_FORBIDDEN": "You don't have permission to do this",
+  "TOTP_RESET_SUCCESS": "2FA reset successfully",
+  "PASSWORD_INVALID": "Incorrect password",
+  "TOTP_DISABLED_SUCCESS": "2FA disabled successfully",
+  "LAB_COST_MUST_NOT_BE_NEGATIVE": "Lab cost must not be negative",
+  "LAB_DELIVERED_DENTIST_NOT_FOUND": "Fitting dentist not found",
+  "LAB_COST_REQUIRED_FOR_PLACEMENT_PAID": "The lab cost must be set before it can be marked as paid",
+  "LAB_COST_AND_DENTIST_REQUIRED_FOR_DELIVERED_PAID": "The lab cost and fitting dentist must be set before this can be marked as paid",
+  "TREATMENT_ITEMS_LOCKED_PAST_DATE": "Items can't be added or removed from a previous day's record",
+  "BACKUP_FAILED": "Backup failed",
+  "BACKUP_DOWNLOAD_FAILED": "Backup failed",
+  "BACKUP_LIST_FAILED": "Failed to load the backup list",
+  "BACKUP_DECRYPT_FAILED": "Failed to decrypt the backup file — check BACKUP_ENCRYPTION_KEY",
+  "BACKUP_FILE_NOT_FOUND": "Backup file not found",
+  "DUPLICATE_NATIONAL_ID": "This national ID already exists in the system (HN {{hn}})",
+  "BULK_RECEIPT_ADDRESS_REQUIRED": "Please enter an address for the bulk receipt",
+  "HN_RESERVATION_EXPIRED": "This HN reservation has expired or the counter was adjusted. Close and reopen the form to get a new HN."
+}

@@ -1,0 +1,9 @@
+{
+  "noDeletedItems": "ไม่มีรายการที่ถูกลบ",
+  "restoredSuccess": "กู้คืนสำเร็จ",
+  "restore": "กู้คืน",
+  "subtitle": "รายการที่ถูกลบจะถูกเก็บไว้ที่นี่และสามารถกู้คืนได้",
+  "patientsSection": "คนไข้ ({{count}})",
+  "dentistsSection": "ทันตแพทย์ ({{count}})",
+  "treatmentsSection": "บันทึกการรักษา ({{count}})"
+}

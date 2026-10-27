@@ -1,0 +1,36 @@
+{
+  "page": {
+    "title": "Receipts",
+    "number": "No.",
+    "customerName": "Customer Name",
+    "totalAmount": "Total Amount",
+    "issuedBy": "Issued By",
+    "individual": "Individual",
+    "bulk": "Bulk",
+    "noReceiptsYet": "No receipts yet"
+  },
+  "form": {
+    "createBulkTitle": "Create Bulk Receipt",
+    "createTitle": "Create Receipt",
+    "bookNumber": "Book No.",
+    "customerName": "Customer Name *",
+    "address": "Address",
+    "taxId": "Tax ID",
+    "patientHn": "Patient HN",
+    "items": "Treatment Items",
+    "addItem": "Add Item",
+    "itemPlaceholder": "Item",
+    "grandTotal": "Grand Total:",
+    "confirmCreate": "Confirm & Create Receipt",
+    "customerNameRequired": "Please enter the customer's name",
+    "addressRequiredForBulk": "Please enter an address for the bulk receipt",
+    "lineItemsRequired": "Please fill in all treatment line items",
+    "issuedSuccess": "Receipt No. {{number}}/{{year}} issued successfully"
+  },
+  "duplicateWarning": {
+    "title": "Receipt Already Exists",
+    "singleDescription": "This treatment record already has receipt No. {{number}}/{{year}}, issued to {{customerName}} on {{date}}. Create another receipt anyway?",
+    "bulkDescription": "{{covered}} of the {{total}} selected records already have a receipt. Create another receipt anyway?",
+    "confirmAnyway": "Create Anyway"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "toothExtra": "Supernumerary tooth",
+  "treatmentType": {
+    "extraction": "Extraction",
+    "surgicalRemoval": "Surgical removal / impaction",
+    "scaling": "Scaling",
+    "rootPlaning": "Root planing",
+    "filling": "Filling",
+    "rootCanalTreatment": "Root canal treatment",
+    "removableDentures": "Removable dentures",
+    "post": "Post",
+    "crown": "Crown",
+    "implant": "Implant",
+    "ortho": "Orthodontics",
+    "bleaching": "Bleaching",
+    "fluoride": "Fluoride treatment",
+    "xRay": "X-ray",
+    "pediatrics": "Pediatric dentistry",
+    "supply": "Materials/Supplies",
+    "others": "Others"
+  },
+  "paymentType": {
+    "transfer": "Transfer",
+    "cash": "Cash",
+    "socialSecurity": "Social Security"
+  },
+  "labWorkType": {
+    "other": "Other",
+    "rtn": "RTN",
+    "implant": "Implant",
+    "denture": "Denture"
+  },
+  "scalingArea": {
+    "top": "Upper",
+    "bottom": "Lower"
+  },
+  "rootPlanArea": {
+    "Q1": "Q1",
+    "Q2": "Q2",
+    "Q3": "Q3",
+    "Q4": "Q4"
+  },
+  "rootType": {
+    "oc": "OC",
+    "lt": "LT",
+    "mi": "MI",
+    "frc": "FRC",
+    "changeMed": "Change MED",
+    "bleachDead": "Bleach (non-vital tooth)"
+  },
+  "dentureType": {
+    "TP": "TP",
+    "RPD": "RPD",
+    "VP": "VP",
+    "CD": "CD"
+  },
+  "crownType": {
+    "fullMetal": "full metal crown",
+    "pfm": "pfm crown",
+    "allCeramic": "all ceramic crown",
+    "veneer": "veneer"
+  },
+  "orthoActivity": {
+    "adjust": "Adjust appliance, month",
+    "printMount": "Impression",
+    "bondUpper": "Bond upper appliance",
+    "bondLower": "Bond lower appliance",
+    "removeAppliance": "Remove appliance",
+    "rtnUpper": "RTN upper",
+    "rtnLower": "RTN lower",
+    "others": "Others"
+  },
+  "rtnMaterial": {
+    "wire": "RTN wire",
+    "clear": "RTN clear"
+  },
+  "xrayType": {
+    "small": "Small film (Periapical)",
+    "big": "Large film"
+  },
+  "xrayFilmType": {
+    "opg": "OPG",
+    "lateralCeph": "Lateral Ceph"
+  },
+  "pediatricsTreatmentType": {
+    "extraction": "Extraction",
+    "filling": "Filling",
+    "rootCanal": "Root canal",
+    "ssc": "ssc"
+  },
+  "forms": {
+    "tooth": "Tooth",
+    "type": "Type",
+    "selectType": "Select type",
+    "details": "Details",
+    "fillingDetailsPlaceholder": "Enter filling details",
+    "detailsPlaceholder": "Enter details",
+    "note": "Note",
+    "activity": "Activity",
+    "month": "Month",
+    "monthPlaceholder": "e.g. 3",
+    "rtnMaterial": "RTN Material",
+    "switchSelectionMethod": "Change selection method",
+    "selectTooth": "Select tooth",
+    "area": "Area",
+    "wholeMouth": "Whole mouth",
+    "xrayType": "X-ray Type",
+    "filmType": "Film Type",
+    "treatmentType": "Treatment Type",
+    "fillingList": "Filling List",
+    "side": "Side",
+    "addTooth": "Add Tooth",
+    "selectAll": "Select All",
+    "clearAll": "Clear All"
+  },
+  "validation": {
+    "required": "Required",
+    "pickAtLeastOne": "Select at least 1 item",
+    "quadrantOrTooth": "Choose a Quadrant or a Tooth",
+    "fillEveryRow": "Fill in the tooth and side for every row"
+  }
+}

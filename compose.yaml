@@ -1,0 +1,38 @@
+name: clinic-portfolio
+services:
+  clinic-db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: clinic_demo
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run python3 scripts/setup-demo.py first}
+    volumes:
+      - clinic-demo-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U demo -d clinic_demo']
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+  clinic-demo:
+    build: .
+    ports:
+      - '127.0.0.1:${CLINIC_PORT:-4101}:4000'
+    environment:
+      NODE_ENV: production
+      PORT: '4000'
+      DATABASE_URL: postgresql://demo:${POSTGRES_PASSWORD}@clinic-db:5432/clinic_demo
+      JWT_SECRET: ${JWT_SECRET:?Run python3 scripts/setup-demo.py first}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:?Run python3 scripts/setup-demo.py first}
+      DEMO_MODE: 'true'
+      DEMO_AUTO_LOGIN: ${DEMO_AUTO_LOGIN:-true}
+      DEMO_DAILY_DATA: 'false'
+      DEMO_USERNAME: demo
+      DEMO_PASSWORD: ${DEMO_PASSWORD:?Run python3 scripts/setup-demo.py first}
+      DEMO_OWNER_PASSWORD: ${DEMO_OWNER_PASSWORD:?Run python3 scripts/setup-demo.py first}
+    depends_on:
+      clinic-db:
+        condition: service_healthy
+    restart: unless-stopped
+volumes:
+  clinic-demo-data:

@@ -1,0 +1,36 @@
+{
+  "page": {
+    "title": "ใบเสร็จรับเงิน",
+    "number": "เลขที่",
+    "customerName": "ชื่อลูกค้า",
+    "totalAmount": "ยอดรวม",
+    "issuedBy": "ผู้ออก",
+    "individual": "รายบุคคล",
+    "bulk": "รวม",
+    "noReceiptsYet": "ยังไม่มีใบเสร็จ"
+  },
+  "form": {
+    "createBulkTitle": "สร้างใบเสร็จรวม",
+    "createTitle": "สร้างใบเสร็จ",
+    "bookNumber": "เล่มที่",
+    "customerName": "ชื่อลูกค้า *",
+    "address": "ที่อยู่",
+    "taxId": "เลขประจำตัวผู้เสียภาษี",
+    "patientHn": "รหัสคนไข้",
+    "items": "รายการรักษา",
+    "addItem": "เพิ่มรายการ",
+    "itemPlaceholder": "รายการ",
+    "grandTotal": "รวมทั้งสิ้น:",
+    "confirmCreate": "ยืนยันสร้างใบเสร็จ",
+    "customerNameRequired": "กรุณากรอกชื่อลูกค้า",
+    "addressRequiredForBulk": "กรุณากรอกที่อยู่สำหรับใบเสร็จรวม",
+    "lineItemsRequired": "กรุณากรอกรายการรักษาให้ครบถ้วน",
+    "issuedSuccess": "ออกใบเสร็จเลขที่ {{number}}/{{year}} สำเร็จ"
+  },
+  "duplicateWarning": {
+    "title": "มีใบเสร็จอยู่แล้ว",
+    "singleDescription": "รายการรักษานี้มีใบเสร็จเลขที่ {{number}}/{{year}} ออกให้ {{customerName}} เมื่อวันที่ {{date}} แล้ว ต้องการสร้างใบเสร็จใหม่อีกใบหรือไม่?",
+    "bulkDescription": "{{covered}} จาก {{total}} รายการที่เลือกมีใบเสร็จอยู่แล้ว ต้องการสร้างใบเสร็จใหม่อีกใบหรือไม่?",
+    "confirmAnyway": "สร้างใหม่"
+  }
+}

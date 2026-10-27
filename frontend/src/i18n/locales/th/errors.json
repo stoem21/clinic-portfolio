@@ -1,0 +1,23 @@
+{
+  "TOTP_LOGIN_CODE_INVALID": "รหัสยืนยันไม่ถูกต้อง",
+  "TOTP_FEATURE_DISABLED": "2FA ถูกปิดใช้งานโดยผู้ดูแลระบบ (TOTP_ENABLED=false)",
+  "TOTP_SETUP_CODE_INVALID": "รหัสไม่ถูกต้อง — ลองอีกครั้ง",
+  "TOTP_ENABLED_SUCCESS": "เปิดใช้งาน 2FA สำเร็จ",
+  "TOTP_RESET_FORBIDDEN": "ไม่มีสิทธิ์",
+  "TOTP_RESET_SUCCESS": "รีเซ็ต 2FA สำเร็จ",
+  "PASSWORD_INVALID": "รหัสผ่านไม่ถูกต้อง",
+  "TOTP_DISABLED_SUCCESS": "ปิดใช้งาน 2FA สำเร็จ",
+  "LAB_COST_MUST_NOT_BE_NEGATIVE": "ค่าแล็บต้องไม่ติดลบ",
+  "LAB_DELIVERED_DENTIST_NOT_FOUND": "ไม่พบทันตแพทย์ผู้ใส่งาน",
+  "LAB_COST_REQUIRED_FOR_PLACEMENT_PAID": "ต้องระบุค่าแล็บก่อนจึงจะทำเครื่องหมายชำระแล้วได้",
+  "LAB_COST_AND_DENTIST_REQUIRED_FOR_DELIVERED_PAID": "ต้องระบุค่าแล็บและทันตแพทย์ผู้ใส่งานก่อนจึงจะทำเครื่องหมายชำระแล้วได้",
+  "TREATMENT_ITEMS_LOCKED_PAST_DATE": "ไม่สามารถเพิ่ม/ลบรายการของวันก่อนหน้าได้",
+  "BACKUP_FAILED": "สำรองข้อมูลไม่สำเร็จ",
+  "BACKUP_DOWNLOAD_FAILED": "สำรองข้อมูลไม่สำเร็จ",
+  "BACKUP_LIST_FAILED": "ไม่สามารถโหลดรายการสำรองข้อมูลได้",
+  "BACKUP_DECRYPT_FAILED": "ถอดรหัสไฟล์สำรองไม่สำเร็จ — ตรวจสอบ BACKUP_ENCRYPTION_KEY",
+  "BACKUP_FILE_NOT_FOUND": "ไม่พบไฟล์สำรองข้อมูล",
+  "DUPLICATE_NATIONAL_ID": "เลขบัตรประชาชนนี้มีอยู่แล้วในระบบ (HN {{hn}})",
+  "BULK_RECEIPT_ADDRESS_REQUIRED": "กรุณากรอกที่อยู่สำหรับใบเสร็จรวม",
+  "HN_RESERVATION_EXPIRED": "HN ที่จองไว้หมดอายุหรือถูกปรับแล้ว กรุณาปิดและเปิดแบบฟอร์มใหม่เพื่อรับ HN ใหม่"
+}
