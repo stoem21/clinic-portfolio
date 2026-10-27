@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 
 const { prismaMock } = vi.hoisted(() => {
   const mock: Record<string, any> = {
@@ -147,8 +147,18 @@ describe('treatments — audit diff shows id(name) for dentist/client changes', 
     prismaMock.auditLog.create.mockResolvedValue({});
   });
 
-  it('PUT (normal branch): dentistId/clientId changes are stored as "id(name)"', async () => {
-    const today = new Date();
+  afterEach(() => vi.useRealTimers());
+
+  it.each([
+    ['2026-10-27T12:00:00Z', '2026-10-27'],
+    ['2026-10-27T18:00:00Z', '2026-10-28'],
+  ])(
+    'PUT (normal branch): dentistId/clientId changes are stored as "id(name)" at %s', async (instant, visitDay) => {
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date(instant));
+    const sameDayAuth = { Authorization: `Bearer ${signAccessToken({ id: 'u1', username: 'admin', role: 'ADMIN' })}` };
+    // Visit dates are calendar values anchored at UTC midnight, not clock instants.
+    const today = new Date(visitDay);
     const existing = {
       id: 'r1',
       clientId: 'c-old',
@@ -163,7 +173,7 @@ describe('treatments — audit diff shows id(name) for dentist/client changes', 
 
     const res = await request(app)
       .put('/api/treatments/r1')
-      .set(auth) // ADMIN, but same-day record hits the normal (non-restricted) branch
+      .set(sameDayAuth) // ADMIN, but same-day record hits the normal (non-restricted) branch
       .send({ ...baseBody, treatmentDate: today.toISOString().slice(0, 10) });
 
     expect(res.status).toBe(200);
